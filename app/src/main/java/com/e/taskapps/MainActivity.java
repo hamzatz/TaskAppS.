@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TaskAdapter adapter;
     List<Task> list;
-
+    int color;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,13 +94,23 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK && requestCode == 100) {
-            Task task = (Task) data.getSerializableExtra("task");
-            list.add(task);
-            adapter.notifyDataSetChanged();
-        }
-
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 100:
+
+                    Task task = (Task) data.getSerializableExtra("task");
+                    list.add(task);
+                    adapter.notifyDataSetChanged();
+                    break;
+                case 2:
+                    color = data.getIntExtra("color", R.color.colorRed);
+                    adapter.setColor(color);
+                    adapter.notifyDataSetChanged();
+                    break;
+            }
+
+        }
     }
 
     @Override
@@ -122,14 +132,17 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        int id = item.getItemId();
+       switch (id){
+           case R.id.action_color:
+               startActivityForResult(new Intent(MainActivity.this,ColorActivity.class),2);
+               break;
+           case R.id.action_settings:
+                break;
+
+
+
         }
 
         return super.onOptionsItemSelected(item);

@@ -14,6 +14,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     List<Task> list;
     private ClickListener clickListener;
+    int color;
 
 
 
@@ -69,5 +70,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             textTitle.setText(task.getTitle());
             textDesc.setText(task.getDesc());
         }
+
+
+        }
+        public void setColor(int color){
+        this.color=color;
+        notifyDataSetChanged();
     }
 }
