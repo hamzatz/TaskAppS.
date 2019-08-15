@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/fiolet"
+    android:padding="18dp"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormActivity">
+
+    <EditText
+        android:id="@+id/editTitle"
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:drawableStart="@drawable/ic_edit2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:drawableStart="@drawable/ic_edit"
+        android:hint="Description"
+        android:padding="12dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/editDesc"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        android:textColor="@color/colorW"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_button"
+        android:onClick="onClickSave"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Отмена"
+        android:textColor="@color/colorW"
+        android:background="@drawable/bg_button"
+        android:padding="10dp"
+        android:onClick="onClickCancel"/>
+
+</LinearLayout>
